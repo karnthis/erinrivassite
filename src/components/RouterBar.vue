@@ -1,7 +1,9 @@
 <template>
   <v-main>
     <v-toolbar color="grey darken-1" dark>
+      <v-app-bar-nav-icon @click="$emit('nav-icon-click')" class="d-flex d-md-none"></v-app-bar-nav-icon>
       <v-toolbar-title>Erin Rivas</v-toolbar-title>
+
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-sm-and-down">
         <v-btn to="/" text>About</v-btn>
@@ -40,8 +42,16 @@
 <script>
 export default {
   name: 'RouterBar',
+  methods: {
+    DrawerState () {
+      this.drawer = !this.drawer
+      return this.drawer
+    }
+  },
   data: () => {
     return {
+      drawer: false,
+      group: null,
       menuItems: [
         {
           label: 'Email',
